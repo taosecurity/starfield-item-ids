@@ -188,7 +188,7 @@ td small { color: var(--muted); font-size: 12px; }
 </ul></nav>
 <main>
 <header id="top">
-  <p class="eyebrow">Starfield 1.16.244.0 &middot; base game + add-ons &middot; 6,019 items &middot; built 2026-11-09 02:29 UTC</p>
+  <p class="eyebrow">Starfield 1.16.244.0 &middot; base game + add-ons &middot; 6,019 items &middot; built 2026-11-09 02:32 UTC</p>
   <h1>Starfield Item IDs</h1>
   <p class="lede">The FormID of every item you can spawn with the console: weapons, spacesuits, apparel, ammo, aid, food, resources, books, keys and mods,
   from the base game, Shattered Space, Terran Armada, Free Lanes, Trackers Alliance and Watchtower. Read straight from the game files. Click an ID or command to copy it.</p>
@@ -227,7 +227,8 @@ td small { color: var(--muted); font-size: 12px; }
     <div class="kind" style="--h: 98">
       <h3>Check an ID in your own game</h3>
       <p>Type <code>help "&lt;name&gt;" 4</code> in the console, for example <code>help "Va'ruun Starstorm" 4</code>.
-      It lists matching records with the ID your game uses. If the first digits differ from this page, set that add-on's prefix under Your load order.</p>
+      It lists matching records with the ID your game uses. If only the first digits differ from this page, set that add-on's prefix under Your load order.
+      If the rest differs, see <a href="#mismatch">Wrong prefix, or out of date?</a></p>
     </div>
   </div>
   </details>
@@ -448,8 +449,17 @@ td small { color: var(--muted); font-size: 12px; }
   <ol>
     <li><strong>Find your real prefix.</strong> In the console, type <code>help "Watchtower Equinox" 4</code>. It shows the ID your game uses, for example <code>05077C43</code>. The first two digits (<code>05</code>) are your Watchtower prefix.</li>
     <li><strong>Enter it on the page.</strong> In <a href="#loadorder">Your load order</a>, click Watchtower's prefix box, change <code>04</code> to <code>05</code> and press Enter.</li>
-    <li><strong>Every ID updates.</strong> All Watchtower items on the page, and their copy-ready commands, now start with <code>05</code>.</li>
+    <li><strong>Every ID updates.</strong> All Watchtower items on the page, and their copy-ready commands, now start with <code>05</code>.
+    The Watchtower Equinox command you copy changes from <code>player.additem 04077C43 1</code> to <code>player.additem 05077C43 1</code>. Only the prefix changes; <code>077C43</code> stays the same.</li>
   </ol>
+  <h3 id="mismatch">Wrong prefix, or out of date?</h3>
+  <p>If an ID from this page doesn't work, compare it with what <code>help "&lt;name&gt;" 4</code> shows in your game. Look at the item's own number, the part after the prefix
+  (the last 6 digits, or the last 4 for Trackers Alliance items that start with <code>FD</code>):</p>
+  <ul>
+    <li><strong>Same own number, different prefix</strong> (page <code>04077C43</code>, your game <code>05077C43</code>): your load order differs. Set that add-on's prefix under <a href="#loadorder">Your load order</a>.</li>
+    <li><strong>Different own number, or <code>help</code> finds nothing</strong>: the item has changed or moved since this list was made. This page was read from Starfield 1.16.244.0 (shown at the top of the page); if your game is newer, the list may be out of date until it is regenerated.</li>
+    <li>A base game ID (starting <code>00</code>) never depends on load order, so a mismatch there always means a version difference.</li>
+  </ul>
   <h3>Details</h3>
   <ul>
     <li>Items whose ID depends on load order have a <span class="tag lo">load order</span> label next to the ID. Base game items have no label and never change.</li>
